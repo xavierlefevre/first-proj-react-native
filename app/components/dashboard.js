@@ -9,6 +9,7 @@ import React, {
 
 import Profile from './profile';
 import Repositories from './repositories';
+import Notes from './notes';
 
 var api = require('../utils/api');
 
@@ -52,7 +53,18 @@ export default class Main extends Component {
       });
   }
   goToNotes(){
-    console.log('Going to Notes');
+    api.getNotes(this.props.userInfo.login)
+      .then((res) => {
+        res = res || {};
+        this.props.navigator.push({
+          component: Notes,
+          title: 'Notes',
+          passProps: {
+            notes: res,
+            userInfo: this.props.userInfo
+          }
+        })
+      })
   }
 
   render(){

@@ -9,10 +9,15 @@ import React, {
 
 import Badge from './badge';
 import Separator from './helpers/separator';
+import Web_View from './helpers/webview';
 
 export default class Repositories extends Component {
   openPage(url){
-    console.log('the url is: ', url);
+    this.props.navigator.push({
+      component: Web_View,
+      title: 'Web View',
+      passProps: {url}
+    })
   }
   render(){
     var repos = this.props.repos;

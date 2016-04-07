@@ -19,7 +19,7 @@ export default class Main extends Component {
       username: '',
       isLoading: false,
       error: false
-    }
+    };
   }
   handleChange(event){
     this.setState({
