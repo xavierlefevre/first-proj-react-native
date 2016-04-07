@@ -8,6 +8,9 @@ import React, {
 } from 'react-native';
 
 import Profile from './profile';
+import Repositories from './repositories';
+
+var api = require('../utils/api');
 
 export default class Main extends Component {
 
@@ -36,7 +39,17 @@ export default class Main extends Component {
    })
   }
   goToRepos(){
-    console.log('Going to Repos');
+    api.getRepos(this.props.userInfo.login)
+      .then((res) => {
+        this.props.navigator.push({
+         component: Repositories,
+         title: 'Repos',
+         passProps: {
+           userInfo: this.props.userInfo,
+           repos: res
+         }
+       })
+      });
   }
   goToNotes(){
     console.log('Going to Notes');

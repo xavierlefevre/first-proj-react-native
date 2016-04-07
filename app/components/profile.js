@@ -10,6 +10,7 @@ import React, {
 } from 'react-native';
 
 import Badge from './badge';
+import Separator from './helpers/separator';
 
 export default class Profile extends Component {
   getRowTitle(user, item){
@@ -29,6 +30,7 @@ export default class Profile extends Component {
               <Text style={styles.rowTitle}>{this.getRowTitle(userInfo,item)}</Text>
               <Text style={styles.rowContainer}>{userInfo[item]}</Text>
             </View>
+            <Separator />
           </View>
         )
       }
