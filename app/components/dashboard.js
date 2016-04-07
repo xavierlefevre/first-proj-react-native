@@ -7,6 +7,8 @@ import React, {
   Image
 } from 'react-native';
 
+import Profile from './profile';
+
 export default class Main extends Component {
 
   makeBackground(btn){
@@ -27,7 +29,11 @@ export default class Main extends Component {
   }
 
   goToProfile(){
-    console.log('Going to Profile Page');
+    this.props.navigator.push({
+     component: Profile,
+     title: 'Profile Page',
+     passProps: {userInfo: this.props.userInfo}
+   })
   }
   goToRepos(){
     console.log('Going to Repos');
